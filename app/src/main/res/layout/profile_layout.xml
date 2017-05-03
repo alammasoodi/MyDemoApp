@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/first_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        >
+        <fragment
+            android:id="@+id/f1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.example.aalam.dashboardapp.NameFragment"
+            ></fragment>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/second_layout"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/first_layout">
+
+        <fragment
+            android:id="@+id/f2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.example.aalam.dashboardapp.GenderFragment"
+            ></fragment>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/third_layout"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/second_layout">
+
+        <fragment
+            android:id="@+id/f3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.example.aalam.dashboardapp.WeightFragment"
+            ></fragment>
+    </RelativeLayout>
+
+
+</LinearLayout>

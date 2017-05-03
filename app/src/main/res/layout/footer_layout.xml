@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/FooterBar"
+              android:orientation="horizontal"
+              android:layout_alignParentBottom="true"
+              >
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:id="@+id/radioGroup">
+
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/user"
+        style="@style/DashboardButton"
+        android:button="@drawable/prof2"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/radiocolor"
+        android:checked="true"
+         />
+
+    <!--  Friends Button -->
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/review"
+        android:layout_marginLeft="5dp"
+        style="@style/DashboardButton"
+        android:checked="false"
+        android:background="@drawable/radiocolor"
+        android:button="@drawable/cal"
+        />
+
+    <!--  Messages Button -->
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/mood"
+        style="@style/DashboardButton"
+        android:layout_marginLeft="3dp"
+        android:background="@drawable/radiocolor"
+        android:checked="false"
+        android:button="@drawable/mood"
+       />
+
+    <!--  Places Button -->
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/chart"
+        style="@style/DashboardButton"
+        android:background="@drawable/radiocolor"
+        android:checked="false"
+        android:button="@drawable/chart"
+       />
+
+    <!--  Events Button -->
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/calender"
+        style="@style/DashboardButton"
+        android:checked="false"
+        android:background="@drawable/radiocolor"
+        android:button="@drawable/clock"
+         />
+
+    <!--  Photos Button -->
+</RadioGroup>
+
+</LinearLayout>

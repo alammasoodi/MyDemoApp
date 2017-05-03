@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#C51162</color>
+    <color name="colorAccentOld">#FF4081</color>
+    <color name="red">#ff0000</color>
+    <color name="grey">#837979</color>
+    <color name="black">#201818</color>
+    <color name="darkmagenta">#99321d</color>
+    <color name="skyblue">#87CEEB</color>
+    <color name="white">#ffffff</color>
+    <color name="materialPink">#F50057</color>
+    <color name="materialWhite">#FFFFFF</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#FF80AB</color>
+    <color name="colorPinkDark">#00d50000</color>
+    <color name="colorPinkMaterial">#b71c1c</color>
+</resources>

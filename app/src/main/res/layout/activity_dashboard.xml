@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context="com.example.aalam.dashboardapp.DashboardActivity"
+
+    android:id="@+id/home_root"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <!-- Include Action Bar -->
+    <!--<include layout="@layout/actionbar_layout"/>-->
+
+    <!--  Include Fragmented dashboard -->
+   <!-- <include layout="@layout/fragment_layout"/>
+
+-->
+   <FrameLayout
+       android:layout_width="wrap_content"
+       android:layout_height="500dp"
+       android:id="@+id/frame_layout"
+       android:name=""
+       >
+
+   </FrameLayout>
+    <!--  Include Footer -->
+    <include layout="@layout/footer_layout"/>
+
+</RelativeLayout>
