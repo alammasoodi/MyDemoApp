@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/colorPinkDark</item>
         <item name="colorAccent">#FF80AB</item>
-        <item name="android:windowBackground">@drawable/win</item>
+        <item name="android:windowBackground">@drawable/welcome</item>
     </style>
     <style name="ActionBarCompat">
         <item name="android:layout_width">fill_parent</item>

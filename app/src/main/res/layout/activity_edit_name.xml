@@ -6,21 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/materialWhite"
+    android:gravity="center"
     tools:context="com.example.aalam.dashboardapp.EditNameActivity">
 
     <TextView
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter New Name"
-        android:textSize="20dp"/>
+        android:textColor="@color/black"
+        android:textSize="40dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:id="@+id/editName"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="200dp">
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorPinkMaterial"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="120dp"
         android:text="Change"
-        android:id="@+id/bChangeName"/>
+        android:background="@drawable/button_bg_stroke"
+        android:id="@+id/bChangeName"
+        /></LinearLayout>
 
 </LinearLayout>

@@ -6,35 +6,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/materialWhite"
     tools:context="com.example.aalam.dashboardapp.EditGenderActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="choose"
-        android:textSize="20dp"/>
+
+        android:text="Choose"
+        android:textColor="@color/black"
+        android:textSize="40dp"/>
     <RadioGroup
+        android:orientation="horizontal"
         android:id="@+id/rg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
         android:clickable="true">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
             android:id="@+id/male"
+            android:textColor="@color/black"
             android:text="M"/>
         <RadioButton
             android:id="@+id/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
+            android:textColor="@color/black"
             android:text="F"/>
     </RadioGroup>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorPinkMaterial"
+        android:background="@drawable/button_bg_stroke"
         android:text="Change"
         android:id="@+id/genderChange"/>
 
