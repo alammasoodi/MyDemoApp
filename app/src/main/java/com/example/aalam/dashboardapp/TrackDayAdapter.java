@@ -1,14 +1,18 @@
 package com.example.aalam.dashboardapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,30 +40,58 @@ public class TrackDayAdapter extends RecyclerView.Adapter<TrackDayAdapter.ViewHo
         mViewHolder = new ViewHolder(mView);
         return mViewHolder;
     }
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView tQ;
         public TextView tA;
         public ImageView im;
+        public boolean flag = true;
+
+        //public CheckBox cbSelect;
         public ViewHolder(View itemView) {
             super(itemView);
             tQ = (TextView)itemView.findViewById(R.id.dayQuesText);
             tA = (TextView)itemView.findViewById(R.id.dayAnsText);
             im = (ImageView)itemView.findViewById(R.id.overflow);
-            im.setVisibility(View.INVISIBLE);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(flag){
+                        im.setVisibility(View.VISIBLE);
+                        flag = false;
+                    }
+                    else {
+                        im.setVisibility(View.INVISIBLE);
+                        flag =true;
+                    }
+                }
+            });
+          //  itemView.setOnClickListener(this);
+
         }
+
 
 
         @Override
         public void onClick(View v) {
+            State.setSomethingIsChecked(flag);
+//            if (selectedItems.get(getPosition(), false)) {
+//
+//                selectedItems.delete(getPosition());
+//                ((CheckBox)v.findViewById(R.id.checkbox)).setChecked(selectedItems.get(getPosition(), false));
+//            }
+//            else {
+//                selectedItems.put(getPosition(), true);
+//                ((CheckBox)v.findViewById(R.id.checkbox)).setChecked(true);
+//            }
         }
     }
 
     @Override
     public void onBindViewHolder(TrackDayAdapter.ViewHolder holder, int position) {
-
         holder.tQ.setText(mDayQuestionsList.get(position).getQuestion());
         holder.tA.setText(mDayQuestionsList.get(position).getAnswer());
-    }
+
+         }
 
     @Override
     public int getItemCount() {

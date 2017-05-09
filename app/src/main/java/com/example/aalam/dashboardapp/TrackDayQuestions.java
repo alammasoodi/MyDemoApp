@@ -6,10 +6,12 @@ package com.example.aalam.dashboardapp;
 
 public class TrackDayQuestions {
     String question, answer;
+    Boolean state;
 
-    public TrackDayQuestions(String question, String answer){
+    public TrackDayQuestions(String question, String answer,Boolean state){
         this.question = question;
         this.answer = answer;
+        this.state = state;
     }
 
     public String getQuestion() {
@@ -19,5 +21,7 @@ public class TrackDayQuestions {
     public String getAnswer() {
         return answer;
     }
+
+    public Boolean getState(){ return state; }
 
 }

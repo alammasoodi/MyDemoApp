@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -22,7 +23,9 @@ public class Track extends Fragment {
     View v;
     TextView setMood;
     int dayPos, pos;
-    Button bday, bMood;
+    Button bday, bMood,bChange;
+    ImageView image,image2,image3;
+    boolean flag = true,flag2 = true,flag3 = true;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,9 @@ public class Track extends Fragment {
         v = inflater.inflate(R.layout.track_layout, container, false);
         bday = (Button) v.findViewById(R.id.trackDay);
         bMood = (Button) v.findViewById(R.id.trackMood);
+        image = (ImageView) v.findViewById(R.id.imageView);
+        image2 = (ImageView) v.findViewById(R.id.redImage);
+        image3 = (ImageView) v.findViewById(R.id.greenImage);
         bday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,9 +66,59 @@ public class Track extends Fragment {
                 startActivity(intent);
             }
         });
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag) {
+                    image.setImageResource(R.drawable.happy);
+                    flag = false;
+                } else {
+                    image.setImageResource(R.drawable.sad);
+                    flag = true;
+                }
+                return;
+            }
+        });
 
+        image2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(flag2){
+                    image2.setImageResource(R.drawable.redfilled);
+                    image3.setImageResource(R.drawable.greenfilled);
+                    flag2 = false;
+                }
+                else
+                {
+                    image2.setImageResource(R.drawable.greenfilled);
+                    image3.setImageResource(R.drawable.redfilled);
+                    flag2 =true;
+                }
+            }
+        });
+
+
+        image3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(flag3){
+                    image3.setImageResource(R.drawable.redfilled);
+                    image2.setImageResource(R.drawable.greenfilled);
+                    flag3 = false;
+                }
+                else
+                {
+                    image3.setImageResource(R.drawable.greenfilled);
+                    image2.setImageResource(R.drawable.redfilled);
+                    flag3 =true;
+                }
+            }
+        });
         return v;
     }
-}
 
+
+
+
+}
 

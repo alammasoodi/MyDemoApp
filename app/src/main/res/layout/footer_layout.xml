@@ -17,9 +17,8 @@
         android:layout_weight="1"
         android:id="@+id/user"
         style="@style/DashboardButton"
-        android:button="@drawable/prof2"
+        android:button="@drawable/prof_button"
         android:layout_marginLeft="5dp"
-        android:background="@drawable/radiocolor"
         android:checked="true"
          />
 
@@ -31,8 +30,7 @@
         android:layout_marginLeft="5dp"
         style="@style/DashboardButton"
         android:checked="false"
-        android:background="@drawable/radiocolor"
-        android:button="@drawable/cal"
+        android:button="@drawable/review_button"
         />
 
     <!--  Messages Button -->
@@ -42,9 +40,8 @@
         android:id="@+id/mood"
         style="@style/DashboardButton"
         android:layout_marginLeft="3dp"
-        android:background="@drawable/radiocolor"
         android:checked="false"
-        android:button="@drawable/mood"
+        android:button="@drawable/track_button"
        />
 
     <!--  Places Button -->
@@ -53,9 +50,8 @@
         android:layout_weight="1"
         android:id="@+id/chart"
         style="@style/DashboardButton"
-        android:background="@drawable/radiocolor"
         android:checked="false"
-        android:button="@drawable/chart"
+        android:button="@drawable/chart_button"
        />
 
     <!--  Events Button -->
@@ -65,8 +61,7 @@
         android:id="@+id/calender"
         style="@style/DashboardButton"
         android:checked="false"
-        android:background="@drawable/radiocolor"
-        android:button="@drawable/clock"
+        android:button="@drawable/clock_button"
          />
 
     <!--  Photos Button -->

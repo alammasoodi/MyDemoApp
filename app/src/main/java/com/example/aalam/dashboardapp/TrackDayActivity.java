@@ -31,13 +31,13 @@ public class TrackDayActivity extends AppCompatActivity {
 //        SharedPreferences getPos = getSharedPreferences("StorePos",MODE_PRIVATE);
 //        pos = getPos.getInt("retDayPos",0);
         RecyclerView.LayoutManager recylerViewLayoutManager;
-        TrackDayQuestions q1 = new TrackDayQuestions("Your Day", "Great");
+        TrackDayQuestions q1 = new TrackDayQuestions("Your Day", "Great",true);
         mQuestionList.add(q1);
-        TrackDayQuestions q2 = new TrackDayQuestions("Weather", "Good");
+        TrackDayQuestions q2 = new TrackDayQuestions("Weather", "Good",false);
         mQuestionList.add(q2);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recylerViewLayoutManager = new LinearLayoutManager(this);
-
+        //State.isSomethingChecked();
         recyclerView.setLayoutManager(recylerViewLayoutManager);
         trackDayAdapter = new TrackDayAdapter(this,mQuestionList);
         recyclerView.setAdapter(trackDayAdapter);

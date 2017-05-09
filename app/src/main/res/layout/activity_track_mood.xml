@@ -5,7 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.aalam.dashboardapp.TrackMoodActivity">
+    <Button
+    android:id="@+id/getchoice"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:text="Submit"/>
+    <Button
+    android:id="@+id/clearall"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Clear All" />
     <ListView
         android:id="@+id/moodList"
         android:layout_height="wrap_content"

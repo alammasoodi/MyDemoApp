@@ -17,7 +17,27 @@
         android:layout_height="wrap_content"
         android:text="Track Mood"/>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/happy"
+        android:id="@+id/imageView"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/redfilled"
+            android:id="@+id/redImage"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/greenfilled"
+            android:id="@+id/greenImage"/>
+    </LinearLayout>
 
 </LinearLayout>

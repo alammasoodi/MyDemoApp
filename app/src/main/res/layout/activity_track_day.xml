@@ -5,11 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.aalam.dashboardapp.TrackDayActivity">
     <android.support.v7.widget.RecyclerView
         android:scrollbars="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="400dp"
         android:id="@+id/recyclerView"/>
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/getchoice2"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Submit"/>
+    <Button
+        android:id="@+id/clearall2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear All" /></LinearLayout>
 
 </LinearLayout>

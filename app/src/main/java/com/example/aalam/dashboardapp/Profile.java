@@ -33,6 +33,7 @@ public class Profile extends Fragment {
         SharedPreferences getName = getActivity().getSharedPreferences("StoreName", Context.MODE_PRIVATE);
         SharedPreferences getGender = getActivity().getSharedPreferences("StoreGender", Context.MODE_PRIVATE);
         SharedPreferences getWeight = getActivity().getSharedPreferences("StoreWeight", Context.MODE_PRIVATE);
+        SharedPreferences getWeightScale = getActivity().getSharedPreferences("StoreWeightScale",Context.MODE_PRIVATE);
         v = inflater.inflate(R.layout.profile_layout, container, false);
         nameEdit = (TextView) v.findViewById(R.id.setNameView);
         nameEdit.setOnClickListener(new View.OnClickListener() {
@@ -85,9 +86,11 @@ public class Profile extends Fragment {
         String name = getName.getString("name", null);
         String gender = getGender.getString("gender", null);
         String weight = getWeight.getString("weight", null);
+        String weightScale = getWeightScale.getString("weightScale",null);
+        String w = ""+weight+" "+weightScale;
         setName.setText(name);
         setGender.setText(gender);
-        setWeight.setText(weight);
+        setWeight.setText(w);
         return v;
     }
 }

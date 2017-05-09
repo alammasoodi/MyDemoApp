@@ -17,11 +17,14 @@
         android:textColor="@color/black"
         android:text="What is your Nationality"
         android:textSize="30dp"/>
-    <EditText
+    <Spinner
+        android:id="@+id/spinner2"
         android:layout_width="match_parent"
-        android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:id="@+id/weightChange"/>
+        android:background="@color/black"
+        />
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
