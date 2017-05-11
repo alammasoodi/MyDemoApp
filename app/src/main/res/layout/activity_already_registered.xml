@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.aalam.dashboardapp.AlreadyRegisteredActivity"
+    tools:ignore="MissingPrefix">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Provide your email address below to recieve your Phendo app reset code"
+        fontPath="fonts/HelveticaNeueThin.ttf"
+        android:textSize="20dp"
+        android:padding="30dp"
+        android:textColor="@color/materialWhite"/>
+
+    <EditText
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:minHeight="40dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:text="Enter here"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Code"
+        android:textSize="40dp"
+        fontPath="fonts/HelveticaNeueThin.ttf"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:id="@+id/getCode"
+        android:textColor="@color/materialWhite"/>
+
+</LinearLayout>
