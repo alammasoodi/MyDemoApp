@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class DashboardActivity extends AppCompatActivity {
     Fragment mFragment;
 
