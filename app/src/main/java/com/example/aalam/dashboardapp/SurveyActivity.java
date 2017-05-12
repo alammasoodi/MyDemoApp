@@ -15,6 +15,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SurveyActivity extends AppCompatActivity {
     ListView surveyLIST;
+    int selectedItem = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +37,28 @@ public class SurveyActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                         Intent myIntent;
+                        if (selectedItem == -1 || selectedItem != position)
+                        {
+
 
                         if (position == 0) {
+
                             myIntent = new Intent(SurveyActivity.this, ForwardActivity1.class);
+                            selectedItem = position;
                             startActivity(myIntent);
                         } else if (position == 1) {
                             myIntent = new Intent(SurveyActivity.this, ForwardActivity2.class);
+                            selectedItem = position;
                             startActivity(myIntent);
-                        } ;
+                        }}
+                        else
+                        {
+
+                         {
+                             System.out.print("position is %d"+selectedItem);
+                         }
+                        }
+
 
 
                     }
