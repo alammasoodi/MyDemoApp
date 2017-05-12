@@ -65,7 +65,6 @@ public class TrackDayAdapter extends RecyclerView.Adapter<TrackDayAdapter.ViewHo
                     }
                 }
             });
-          //  itemView.setOnClickListener(this);
 
         }
 
@@ -74,15 +73,7 @@ public class TrackDayAdapter extends RecyclerView.Adapter<TrackDayAdapter.ViewHo
         @Override
         public void onClick(View v) {
             State.setSomethingIsChecked(flag);
-//            if (selectedItems.get(getPosition(), false)) {
-//
-//                selectedItems.delete(getPosition());
-//                ((CheckBox)v.findViewById(R.id.checkbox)).setChecked(selectedItems.get(getPosition(), false));
-//            }
-//            else {
-//                selectedItems.put(getPosition(), true);
-//                ((CheckBox)v.findViewById(R.id.checkbox)).setChecked(true);
-//            }
+
         }
     }
 

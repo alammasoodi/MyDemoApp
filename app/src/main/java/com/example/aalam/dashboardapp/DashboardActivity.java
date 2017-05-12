@@ -2,11 +2,15 @@ package com.example.aalam.dashboardapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class DashboardActivity extends AppCompatActivity {
     Fragment mFragment;
@@ -49,6 +53,8 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
 
-                ;
+
     }
+
+
 }

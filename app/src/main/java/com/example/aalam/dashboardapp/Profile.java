@@ -21,6 +21,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class Profile extends Fragment {
     TextView setName, setGender, setWeight,setRace,setHeight, nameEdit, genderEdit, bWeight,bRace,bHeight;
     View v;
+    Button nu,sur;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,23 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EditHeightActivity.class);
+                startActivity(intent);
+            }
+        });
+        nu = (Button)v.findViewById(R.id.nu);
+        nu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AlreadyRegisteredActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sur = (Button)v.findViewById(R.id.survey);
+        sur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SurveyActivity.class);
                 startActivity(intent);
             }
         });

@@ -32,6 +32,16 @@
         </activity>
         <activity android:name=".EditHeightActivity">
         </activity>
+        <activity android:name=".AlreadyRegisteredActivity">
+        </activity>
+        <activity android:name=".VerifyActivity">
+        </activity>
+        <activity android:name=".SurveyActivity">
+        </activity>
+        <activity android:name=".ForwardActivity1">
+        </activity>
+        <activity android:name=".ForwardActivity2">
+        </activity>
     </application>
 
 </manifest>
