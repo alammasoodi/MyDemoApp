@@ -22,7 +22,7 @@ public class TrackMoodActivity extends AppCompatActivity {
     int pos;
     Button getChoice, clearAll;
     SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "MyUserChoice" ;
+    public static final String MyPREFERENCES = "MyUserChoice";
     ArrayList<String> selectedItems = new ArrayList<String>();
     View previouslySelectedItem;
 
@@ -74,54 +74,55 @@ public class TrackMoodActivity extends AppCompatActivity {
         });
     }
 
-        private void SaveSelections(){
+    private void SaveSelections() {
 
         SharedPreferences.Editor prefEditor = sharedpreferences.edit();
         String savedItems = getSavedItems();
-        prefEditor.putString(MyPREFERENCES.toString(),savedItems);
+        prefEditor.putString(MyPREFERENCES.toString(), savedItems);
         prefEditor.commit();
-            finish();
+        finish();
     }
 
-    private String getSavedItems(){
+    private String getSavedItems() {
 
-        String savedItems="";
+        String savedItems = "";
         int count = this.listView.getAdapter().getCount();
-        for(int i=0;i<count;i++){
-            if(this.listView.isItemChecked(i)){
-                if(savedItems.length()>0){
-                    savedItems+=","+this.listView.getItemAtPosition(i);
-                }
-                else{
-                    savedItems+=this.listView.getItemAtPosition(i);
+        for (int i = 0; i < count; i++) {
+            if (this.listView.isItemChecked(i)) {
+                if (savedItems.length() > 0) {
+                    savedItems += "," + this.listView.getItemAtPosition(i);
+                } else {
+                    savedItems += this.listView.getItemAtPosition(i);
                 }
             }
         }
         return savedItems;
     }
-        private void LoadSelections(){
-            if(sharedpreferences.contains(MyPREFERENCES.toString())){
-                String savedItems = sharedpreferences.getString(MyPREFERENCES.toString(),"");
-                selectedItems.addAll(Arrays.asList(savedItems.split(",")));
-                int count = this.listView.getAdapter().getCount();
-            for(int i=0;i<count;i++){
-                String currentItem = (String)listView.getAdapter().getItem(i);
-                if(selectedItems.contains(currentItem)){
-                    listView.setItemChecked(i,true);
+
+    private void LoadSelections() {
+        if (sharedpreferences.contains(MyPREFERENCES.toString())) {
+            String savedItems = sharedpreferences.getString(MyPREFERENCES.toString(), "");
+            selectedItems.addAll(Arrays.asList(savedItems.split(",")));
+            int count = this.listView.getAdapter().getCount();
+            for (int i = 0; i < count; i++) {
+                String currentItem = (String) listView.getAdapter().getItem(i);
+                if (selectedItems.contains(currentItem)) {
+                    listView.setItemChecked(i, true);
+                } else {
+                    listView.setItemChecked(i, false);
                 }
-                else {
-                    listView.setItemChecked(i,false);
-                }
-            }
             }
         }
-        private void ClearSelections(){
-            int count = this.listView.getAdapter().getCount();
-            for(int i = 0; i<count;i++){
-                this.listView.setItemChecked(i,false);
-            }
-            SaveSelections();
-        }}
+    }
+
+    private void ClearSelections() {
+        int count = this.listView.getAdapter().getCount();
+        for (int i = 0; i < count; i++) {
+            this.listView.setItemChecked(i, false);
+        }
+        SaveSelections();
+    }
+}
 //
 //        listView.setSelection(pos);
 //        listView.setItemChecked(pos, true);
