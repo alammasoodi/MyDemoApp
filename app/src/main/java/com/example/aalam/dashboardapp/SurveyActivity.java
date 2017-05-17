@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,7 +33,7 @@ public class SurveyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_survey);
         surveyLIST = (ListView) findViewById(R.id.surveyList);
         newButton = (Button) findViewById(R.id.newButton);
-        final SharedPreferences.Editor editor = getSharedPreferences("SurveyQues1", MODE_PRIVATE).edit();
+//        final SharedPreferences.Editor editor = getSharedPreferences("SurveyQues1", MODE_PRIVATE).edit();
 
         // nextButton = (Button) findViewById(R.id.nextButton);
         CalligraphyConfig.initDefault(
@@ -42,16 +43,21 @@ public class SurveyActivity extends AppCompatActivity {
                         .build());
         String[] values = new String[]{"Yes, I have had a menstrual period",
                 "No, I have not started menstruating"};
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, values) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-                tv.setTextColor(Color.BLACK);
-                return view;
-            }
-        };
+        int [] prgmImages={R.drawable.blackmore,R.drawable.blackmore};
+//        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values) {
+//            @Override
+//            public View getView(int position, View convertView, ViewGroup parent) {
+//                View view = super.getView(position, convertView, parent);
+//                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+//                tv.setTextColor(Color.BLACK);
+//
+//                return view;
+//            }
+//        };
+//        surveyLIST.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+//        surveyLIST.setAdapter(adapter);
         surveyLIST.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        final MyCustomAdapter adapter = new MyCustomAdapter(SurveyActivity.this, values,prgmImages);
         surveyLIST.setAdapter(adapter);
         SharedPreferences getChecked = getSharedPreferences("StoreChecked", MODE_PRIVATE);
         getState = getChecked.getBoolean("checked", false);
@@ -60,57 +66,59 @@ public class SurveyActivity extends AppCompatActivity {
         if (flag2 == false) {
             newButton.setVisibility(View.INVISIBLE);
         }
-        if (getState == true) {
-            flag = true;
-        }
+
 
 
         surveyLIST.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
-                    public void setItemSelected(View view) {
-                        View rowView = view;
-                        TextView tv = (TextView) rowView.findViewById(android.R.id.text1);
-                        tv.setTextColor(Color.RED);
-                    }
-
-                    public void setItemNormal() {
-                        for (int i = 0; i < adapter.getCount(); i++) {
-                            View v = surveyLIST.getChildAt(i);
-                            TextView txtview = ((TextView) v.findViewById(android.R.id.text1));
-                            txtview.setTextColor(Color.BLACK);
-                        }
-                    }
-
+//                    public void setItemSelected(View view) {
+//                        View rowView = view;
+//                        TextView tv = (TextView) rowView.findViewById(android.R.id.text1);
+//                        tv.setTextColor(Color.RED);
+//                    }
+//
+//                    public void setItemNormal() {
+//                        for (int i = 0; i < adapter.getCount(); i++) {
+//                            View v = surveyLIST.getChildAt(i);
+//                            TextView txtview = ((TextView) v.findViewById(android.R.id.text1));
+//                            txtview.setTextColor(Color.BLACK);
+//                        }
+//                    }
+//
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        if (flag == true) {
-                            Intent myIntent;
-                            if (position == 0) {
-                                editor.putInt("ques", 0);
-                                editor.commit();
-                                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-                                tv.setTextColor(Color.RED);
-                                myIntent = new Intent(SurveyActivity.this, SurveyActivity2.class);
-                                flag = false;
-
-                                startActivity(myIntent);
-                            } else if (position == 1) {
-                                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-                                tv.setTextColor(Color.RED);
-                                editor.putInt("ques", 1);
-                                editor.commit();
-                                myIntent = new Intent(SurveyActivity.this, SurveyActivity2.class);
-                                flag = false;
-                                startActivity(myIntent);
-                            }
-                        } else {
-                            setItemNormal();
-                            View rowView = view;
-                            setItemSelected(rowView);
-
-
+                        adapter.setSelectedIndex(position);
                         }
-                    }
+                      // adapter.setSelectedItem(view);
+
+// if (flag == true) {
+//                            Intent myIntent;
+//                            if (position == 0) {
+//                                editor.putInt("ques", 0);
+//                                editor.commit();
+//                                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+//                                tv.setTextColor(Color.RED);
+//                                myIntent = new Intent(SurveyActivity.this, SurveyActivity2.class);
+//                                flag = false;
+//
+//                                startActivity(myIntent);
+//                            } else if (position == 1) {
+//                                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+//                                tv.setTextColor(Color.RED);
+//                                editor.putInt("ques", 1);
+//                                editor.commit();
+//                                myIntent = new Intent(SurveyActivity.this, SurveyActivity2.class);
+//                                flag = false;
+//                                startActivity(myIntent);
+//                            }
+//                        } else {
+//                            setItemNormal();
+//                           View rowView = view;
+//                            setItemSelected(rowView);
+//
+//
+//                        }
+
                 });
 
     }
@@ -138,8 +146,8 @@ public class SurveyActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
+//    @Override
+//    protected void attachBaseContext(Context newBase) {
+//        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+//    }
 }
