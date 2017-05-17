@@ -42,6 +42,14 @@
         </activity>
         <activity android:name=".ForwardActivity2">
         </activity>
+        <activity android:name=".ForwardActivity3">
+        </activity>
+        <activity android:name=".SurveyActivity2">
+        </activity>
+        <activity android:name=".EligibleActivity">
+        </activity>
+        <activity android:name=".InEligibleActivity">
+        </activity>
     </application>
 
 </manifest>
