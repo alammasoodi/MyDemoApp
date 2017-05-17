@@ -3,14 +3,17 @@ package com.example.aalam.dashboardapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -36,13 +39,24 @@ public class SurveyActivity extends AppCompatActivity {
                         .build());
         String[] values = new String[]{"Yes, I have had a menstrual period",
                 "No, I have not started menstruating"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, android.R.id.text1, values);
-        surveyLIST.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        surveyLIST.setAdapter(adapter);
-        SharedPreferences getChecked = this.getSharedPreferences("StoreChecked", Context.MODE_PRIVATE);
-        SharedPreferences getPosition = this.getSharedPreferences("StoreChecked", Context.MODE_PRIVATE);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, values){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                View view = super.getView(position,convertView,parent);
+                TextView  tv = (TextView)view.findViewById(android.R.id.text1);
+                tv.setTextColor(Color.BLACK);
+                return view;
+            }
+        };
+       surveyLIST.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+       surveyLIST.setAdapter(adapter);
+        SharedPreferences getChecked = getSharedPreferences("StoreChecked", MODE_PRIVATE);
         getState = getChecked.getBoolean("checked", false);
-        getPos = getPosition.getInt("pos", -1);
+        getPos = getChecked.getInt("pos",0);
+        //surveyLIST.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+//        SharedPreferences getChecked = getSharedPreferences("StoreChecked", MODE_PRIVATE);
+//        getState = getChecked.getBoolean("checked", false);
+//        getPos = getChecked.getInt("pos", -1);
         flag2 = false;
         if (flag2 == false) {
             newButton.setVisibility(View.INVISIBLE);
@@ -67,14 +81,23 @@ public class SurveyActivity extends AppCompatActivity {
                                 myIntent = new Intent(SurveyActivity.this, ForwardActivity2.class);
                                 flag = false;
                                 startActivity(myIntent);
-                            }
+                            }                            }
 
+                    else{
+
+                            for (int i = 0; i < adapter.getCount(); i++) {
+                                View item = surveyLIST.getChildAt(i);
+                                if (item != null) {
+                                    item.setBackgroundColor(Color.TRANSPARENT);
+                                }
+                            }
+                            view.setBackgroundColor(Color.RED);
 
                         }
-                    }
-                });
-    }
 
+                }});
+
+    }
 
     @Override
     public void onResume() {
@@ -96,10 +119,10 @@ public class SurveyActivity extends AppCompatActivity {
         super.onPause();
         flag2 = true;
     }
-
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 }
+//
+//    @Override
+//    protected void attachBaseContext(Context newBase) {
+//        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+//    }
+//}

@@ -18,4 +18,6 @@
     <color name="colorAccent">#FF80AB</color>
     <color name="colorPinkDark">#00d50000</color>
     <color name="colorPinkMaterial">#b71c1c</color>
+    <drawable name="focused">#ff5500</drawable>
+    <drawable name="selected">#FF00FF</drawable>
 </resources>
