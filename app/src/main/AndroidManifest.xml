@@ -50,6 +50,8 @@
         </activity>
         <activity android:name=".InEligibleActivity">
         </activity>
+        <activity android:name=".ControlActivity">
+        </activity>
     </application>
 
 </manifest>

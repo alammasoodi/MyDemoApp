@@ -4,17 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:ignore="MissingPrefix"
     android:layout_height="match_parent"
-    tools:context="com.example.aalam.dashboardapp.InEligibleActivity">
+    android:paddingTop="50dp"
+    tools:ignore="MissingPrefix"
+    android:orientation="vertical"
+    tools:context="com.example.aalam.dashboardapp.EligibleActivity">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You are Not eligible"
+        android:text="Ineligible"
+        android:paddingLeft="50dp"
         fontPath="fonts/HelveticaNeueThin.ttf"
         android:gravity="center"
         android:textSize="30dp"
         android:padding="30dp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/materialPink"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unfortunately, your answers to the questions indicate you are ineligible at this time"
+        fontPath="fonts/HelveticaNeueThin.ttf"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/materialPink"/>
+
 
 </LinearLayout>

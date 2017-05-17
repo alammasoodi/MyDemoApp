@@ -32,7 +32,9 @@ public class SurveyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_survey);
         surveyLIST = (ListView) findViewById(R.id.surveyList);
         newButton = (Button) findViewById(R.id.newButton);
-       // nextButton = (Button) findViewById(R.id.nextButton);
+        final SharedPreferences.Editor editor = getSharedPreferences("SurveyQues1", MODE_PRIVATE).edit();
+
+        // nextButton = (Button) findViewById(R.id.nextButton);
         CalligraphyConfig.initDefault(
                 new CalligraphyConfig.Builder()
                         .setDefaultFontPath("fonts/HelveticaNeueThin.ttf")
@@ -84,6 +86,8 @@ public class SurveyActivity extends AppCompatActivity {
                         if (flag == true) {
                             Intent myIntent;
                             if (position == 0) {
+                                editor.putInt("ques", 0);
+                                editor.commit();
                                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                                 tv.setTextColor(Color.RED);
                                 myIntent = new Intent(SurveyActivity.this, SurveyActivity2.class);
@@ -93,6 +97,8 @@ public class SurveyActivity extends AppCompatActivity {
                             } else if (position == 1) {
                                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                                 tv.setTextColor(Color.RED);
+                                editor.putInt("ques", 1);
+                                editor.commit();
                                 myIntent = new Intent(SurveyActivity.this, SurveyActivity2.class);
                                 flag = false;
                                 startActivity(myIntent);
@@ -119,6 +125,7 @@ public class SurveyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SurveyActivity.this, SurveyActivity2.class);
+//                i.putExtra("nextButtonValue",getPos);
                 startActivity(i);
             }
         });
