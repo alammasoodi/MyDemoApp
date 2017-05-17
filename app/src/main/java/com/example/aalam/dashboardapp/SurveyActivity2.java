@@ -1,6 +1,7 @@
 package com.example.aalam.dashboardapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +42,7 @@ public class SurveyActivity2 extends AppCompatActivity {
         surveyLIST2.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         surveyLIST2.setAdapter(adapter);
         surveyLIST2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             public void setItemSelected(View view) {
                 View rowView = view;
                 TextView tv = (TextView) rowView.findViewById(android.R.id.text1);
@@ -59,6 +61,14 @@ public class SurveyActivity2 extends AppCompatActivity {
                 setItemNormal();
                 View rowView = view;
                 setItemSelected(rowView);
+                if(position == 0){
+                   Intent  myIntent = new Intent(SurveyActivity2.this, EligibleActivity.class);
+                    startActivity(myIntent);
+                }
+                else if(position == 1){
+                    Intent  myIntent = new Intent(SurveyActivity2.this, InEligibleActivity.class);
+                    startActivity(myIntent);
+                }
             }
         });
     }

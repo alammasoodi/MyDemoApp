@@ -39,16 +39,13 @@
         android:id="@+id/newButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click"
+        android:text="Next"
+        android:layout_gravity="bottom"
         android:textColor="@color/materialWhite"
         android:background="@drawable/button_click"
         android:backgroundTint="@color/black"
         />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:id="@+id/nextButton"/>
+
 </LinearLayout>
 
 </LinearLayout>

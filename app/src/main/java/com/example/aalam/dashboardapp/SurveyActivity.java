@@ -23,7 +23,7 @@ public class SurveyActivity extends AppCompatActivity {
     ListView surveyLIST;
     boolean getState, flag, flag2;
     int getPos;
-    Button newButton, nextButton;
+    Button newButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class SurveyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_survey);
         surveyLIST = (ListView) findViewById(R.id.surveyList);
         newButton = (Button) findViewById(R.id.newButton);
-        nextButton = (Button) findViewById(R.id.nextButton);
+       // nextButton = (Button) findViewById(R.id.nextButton);
         CalligraphyConfig.initDefault(
                 new CalligraphyConfig.Builder()
                         .setDefaultFontPath("fonts/HelveticaNeueThin.ttf")
@@ -54,10 +54,6 @@ public class SurveyActivity extends AppCompatActivity {
         SharedPreferences getChecked = getSharedPreferences("StoreChecked", MODE_PRIVATE);
         getState = getChecked.getBoolean("checked", false);
         getPos = getChecked.getInt("pos", 0);
-        //surveyLIST.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-//        SharedPreferences getChecked = getSharedPreferences("StoreChecked", MODE_PRIVATE);
-//        getState = getChecked.getBoolean("checked", false);
-//        getPos = getChecked.getInt("pos", -1);
         flag2 = false;
         if (flag2 == false) {
             newButton.setVisibility(View.INVISIBLE);
@@ -90,14 +86,14 @@ public class SurveyActivity extends AppCompatActivity {
                             if (position == 0) {
                                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                                 tv.setTextColor(Color.RED);
-                                myIntent = new Intent(SurveyActivity.this, ForwardActivity1.class);
+                                myIntent = new Intent(SurveyActivity.this, SurveyActivity2.class);
                                 flag = false;
 
                                 startActivity(myIntent);
                             } else if (position == 1) {
                                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                                 tv.setTextColor(Color.RED);
-                                myIntent = new Intent(SurveyActivity.this, ForwardActivity2.class);
+                                myIntent = new Intent(SurveyActivity.this, SurveyActivity2.class);
                                 flag = false;
                                 startActivity(myIntent);
                             }
@@ -111,13 +107,6 @@ public class SurveyActivity extends AppCompatActivity {
                     }
                 });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SurveyActivity.this, SurveyActivity2.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -129,7 +118,7 @@ public class SurveyActivity extends AppCompatActivity {
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SurveyActivity.this, ForwardActivity3.class);
+                Intent i = new Intent(SurveyActivity.this, SurveyActivity2.class);
                 startActivity(i);
             }
         });

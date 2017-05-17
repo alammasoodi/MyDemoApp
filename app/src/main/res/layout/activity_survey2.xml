@@ -13,12 +13,21 @@ tools:context="com.example.aalam.dashboardapp.SurveyActivity">
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Have you ever gone to USA?"
+    android:text="Have you experienced symptoms of endometrosis in the past 3 months"
     fontPath="fonts/HelveticaNeueThin.ttf"
     android:gravity="center"
     android:textSize="30dp"
     android:padding="30dp"
     android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Symptoms can include painful periods, painful throughout your cycle "
+        fontPath="fonts/HelveticaNeueThin.ttf"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:padding="30dp"
+        android:textColor="@color/black"/>
 
 <ListView
     android:id="@+id/surveyList2"
