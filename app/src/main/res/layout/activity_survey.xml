@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#FFFFFF"
     android:orientation="vertical"
     tools:ignore="MissingPrefix"
+    android:paddingTop="30dp"
     tools:context="com.example.aalam.dashboardapp.SurveyActivity">
     <TextView
         android:layout_width="wrap_content"
@@ -18,14 +19,31 @@
         android:textSize="30dp"
         android:padding="30dp"
         android:textColor="@color/black"/>
+
     <ListView
         android:id="@+id/surveyList"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        fontPath="fonts/HelveticaNeueThin.ttf"
+        android:textColor="@drawable/list_selector"
+        android:duplicateParentState="true"
+        android:divider="#b5b5b5"
         android:choiceMode="singleChoice">
         >
     </ListView>
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp">
+    <Button
+        android:id="@+id/newButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click"
+        android:textColor="@color/materialWhite"
+        android:background="@drawable/button_click"
+        android:backgroundTint="@color/black"
+        />
+</LinearLayout>
 
 </LinearLayout>
