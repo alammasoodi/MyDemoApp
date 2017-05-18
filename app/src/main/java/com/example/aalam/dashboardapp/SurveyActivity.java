@@ -33,7 +33,7 @@ public class SurveyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_survey);
         surveyLIST = (ListView) findViewById(R.id.surveyList);
         newButton = (Button) findViewById(R.id.newButton);
-//        final SharedPreferences.Editor editor = getSharedPreferences("SurveyQues1", MODE_PRIVATE).edit();
+       final SharedPreferences.Editor editor = getSharedPreferences("SurveyQues1", MODE_PRIVATE).edit();
 
         // nextButton = (Button) findViewById(R.id.nextButton);
         CalligraphyConfig.initDefault(
@@ -60,7 +60,7 @@ public class SurveyActivity extends AppCompatActivity {
         final MyCustomAdapter adapter = new MyCustomAdapter(SurveyActivity.this, values,prgmImages);
         surveyLIST.setAdapter(adapter);
         SharedPreferences getChecked = getSharedPreferences("StoreChecked", MODE_PRIVATE);
-        getState = getChecked.getBoolean("checked", false);
+       // getState = getChecked.getBoolean("checked", false);
         getPos = getChecked.getInt("pos", 0);
         flag2 = false;
         if (flag2 == false) {
@@ -121,6 +121,15 @@ public class SurveyActivity extends AppCompatActivity {
 
                 });
 
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putInt("pos", surveyLIST.getCheckedItemPosition());
+                editor.commit();
+                Intent i = new Intent(SurveyActivity.this, SurveyActivity2.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -129,15 +138,9 @@ public class SurveyActivity extends AppCompatActivity {
         if (flag2 == true) {
             newButton.setVisibility(View.VISIBLE);
         }
-        newButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SurveyActivity.this, SurveyActivity2.class);
-//                i.putExtra("nextButtonValue",getPos);
-                startActivity(i);
-            }
-        });
+
     }
+
 
     @Override
     public void onPause() {
@@ -146,8 +149,8 @@ public class SurveyActivity extends AppCompatActivity {
     }
 
 
-//    @Override
-//    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-//    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 }

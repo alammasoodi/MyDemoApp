@@ -22,7 +22,7 @@ public class MyCustomAdapter2 extends BaseAdapter {
     Context context;
     int[] imageId;
     int selectedIndex,getQues;
-
+    boolean f = true;
 
     public MyCustomAdapter2(Context surveyActivity2, String[] prgmNameList, int[] prgmImages,int Qno) {
 
@@ -31,6 +31,7 @@ public class MyCustomAdapter2 extends BaseAdapter {
         imageId = prgmImages;
         selectedIndex = -1;
         getQues = Qno;
+
 
 
 
@@ -65,6 +66,7 @@ public class MyCustomAdapter2 extends BaseAdapter {
 
         if (convertView == null) {
             v = LayoutInflater.from(context).inflate(R.layout.listitem2_layout, null);
+            v.setMinimumHeight(100);
             holder = new MyCustomAdapter2.ViewHolder();
             holder.tv = (TextView) v.findViewById(R.id.customTextView2);
             holder.img = (ImageView)v.findViewById(R.id.customImageView2);
@@ -77,7 +79,10 @@ public class MyCustomAdapter2 extends BaseAdapter {
             holder.img.setImageResource(R.drawable.redmore);
         } else {
             holder.tv.setTextColor(Color.BLACK);
+            if(f == true)
             holder.img.setImageResource(R.drawable.blackmore);
+            else
+                holder.img.setImageResource(R.drawable.transparent);
         }
         holder.tv.setText(result[position]);
         holder.tv.setTextSize(18);
@@ -94,11 +99,13 @@ public class MyCustomAdapter2 extends BaseAdapter {
                         myIntent = new Intent(context, EligibleActivity.class);
                         holder1.tv.setTextColor(Color.RED);
                         holder1.img.setImageResource(R.drawable.redmore);
+                        f = false;
                         context.startActivity(myIntent);
                     }else{
                         myIntent = new Intent(context, InEligibleActivity.class);
                         holder1.tv.setTextColor(Color.RED);
                         holder1.img.setImageResource(R.drawable.redmore);
+                        f = false;
                         context.startActivity(myIntent);
                     }
                     } else if (position == 1) {
@@ -106,6 +113,7 @@ public class MyCustomAdapter2 extends BaseAdapter {
                         myIntent = new Intent(context,ControlActivity.class);
                         holder1.tv.setTextColor(Color.RED);
                         holder1.img.setImageResource(R.drawable.redmore);
+                        f = false;
                         context.startActivity(myIntent);
                     }
                     else
@@ -113,6 +121,7 @@ public class MyCustomAdapter2 extends BaseAdapter {
                         myIntent = new Intent(context,InEligibleActivity.class);
                         holder1.tv.setTextColor(Color.RED);
                         holder1.img.setImageResource(R.drawable.redmore);
+                        f = false;
                         context.startActivity(myIntent);
 
                     }

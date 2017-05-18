@@ -20,7 +20,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class SurveyActivity2 extends AppCompatActivity {
     ListView surveyLIST2;
     int getQues;
-    int QNo;
+    int QNo,Qn,actual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,10 @@ public class SurveyActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_survey2);
         Intent intent = getIntent();
         QNo = intent.getIntExtra("quesNo",0);
+        Qn = intent.getIntExtra("nextButtonValue",0);
+        SharedPreferences getQues = getSharedPreferences("SurveyQues1", MODE_PRIVATE);
+        QNo = getQues.getInt("pos", 0);
+        SharedPreferences.Editor editor = getSharedPreferences("StoreChecked", MODE_PRIVATE).edit();
         surveyLIST2 = (ListView) findViewById(R.id.surveyList2);
         CalligraphyConfig.initDefault(
                 new CalligraphyConfig.Builder()
@@ -100,11 +104,12 @@ public class SurveyActivity2 extends AppCompatActivity {
             }
         });
 
-    }}
+    }
 
 
-//    @Override
-//    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-//    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+}
 

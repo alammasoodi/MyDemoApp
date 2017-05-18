@@ -28,7 +28,10 @@ tools:context="com.example.aalam.dashboardapp.SurveyActivity">
         android:textSize="20dp"
         android:padding="30dp"
         android:textColor="@color/black"/>
-
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/>
 <ListView
     android:id="@+id/surveyList2"
     android:layout_height="wrap_content"
@@ -36,8 +39,12 @@ tools:context="com.example.aalam.dashboardapp.SurveyActivity">
     android:textColor="@drawable/list_selector"
     android:duplicateParentState="true"
     android:layout_marginTop="5dp"
-    android:divider="@android:color/transparent"
-    android:dividerHeight="10.0sp"
+    android:divider="#c0c0c0"
+    android:dividerHeight="2.0sp"
     android:choiceMode="singleChoice">
     >
-</ListView></LinearLayout>
+</ListView>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"/></LinearLayout>

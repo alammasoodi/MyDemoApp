@@ -36,9 +36,10 @@ public class MyCustomAdapter extends BaseAdapter {
         context = surveyActivity;
         imageId = prgmImages;
         selectedIndex = -1;
+
         SharedPreferences getChecked = context.getSharedPreferences("StoreChecked", MODE_PRIVATE);
         getState = getChecked.getBoolean("checked", false);
-        getPos = getChecked.getInt("pos", 0);
+       // getPos = getChecked.getInt("pos", 0);
         if (getState == true) {
             flag = true;
         }
@@ -78,6 +79,7 @@ public class MyCustomAdapter extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             v = LayoutInflater.from(context).inflate(R.layout.listitem_layout, null);
+            v.setMinimumHeight(100);
             holder = new ViewHolder();
             holder.tv = (TextView) v.findViewById(R.id.customTextView);
             holder.img = (ImageView)v.findViewById(R.id.customImageView);
@@ -90,20 +92,26 @@ public class MyCustomAdapter extends BaseAdapter {
             holder.img.setImageResource(R.drawable.redmore);
         } else {
             holder.tv.setTextColor(Color.BLACK);
-            holder.img.setImageResource(R.drawable.blackmore);
+            if (flag == true)
+                holder.img.setImageResource(R.drawable.blackmore);
+            else
+                holder.img.setImageResource(R.drawable.transparent);
         }
         holder.tv.setText(result[position]);
-        holder.tv.setTextSize(18);
 
+        holder.tv.setTextSize(18);
+     final SharedPreferences.Editor editor = context.getSharedPreferences("SurveyQues1", MODE_PRIVATE).edit();
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent myIntent;
                 if (flag == true) {
                     ViewHolder holder1 = new ViewHolder();
                     if (position == 0) {
                         myIntent = new Intent(context, SurveyActivity2.class);
-                        myIntent.putExtra("quesNo",0);
+                        editor.putInt("pos", 0);
+                        editor.commit();
                         holder1.tv = (TextView) v.findViewById(R.id.customTextView);
                         holder1.img = (ImageView)v.findViewById(R.id.customImageView);
                         holder1.tv.setTextColor(Color.RED);
@@ -113,7 +121,8 @@ public class MyCustomAdapter extends BaseAdapter {
 
                     } else if (position == 1) {
                         myIntent = new Intent(context, SurveyActivity2.class);
-                        myIntent.putExtra("quesNo",1);
+                        editor.putInt("pos", 1);
+                        editor.commit();
                         holder1.tv = (TextView) v.findViewById(R.id.customTextView);
                         holder1.img = (ImageView)v.findViewById(R.id.customImageView);
                         holder1.tv.setTextColor(Color.RED);
