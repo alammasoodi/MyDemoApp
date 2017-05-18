@@ -21,7 +21,7 @@
         android:textColor="@color/black"/>
     <View
         android:layout_width="fill_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#c0c0c0"/>
 
     <ListView
@@ -32,13 +32,13 @@
         android:duplicateParentState="true"
         android:layout_marginTop="5dp"
         android:divider="#c0c0c0"
-        android:dividerHeight="2sp"
+        android:dividerHeight="1sp"
         android:choiceMode="singleChoice">
         >
     </ListView>
     <View
         android:layout_width="fill_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginTop="5dp"
         android:background="#c0c0c0"/>
     <LinearLayout
