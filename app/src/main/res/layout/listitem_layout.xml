@@ -16,8 +16,9 @@
     <ImageView
         android:id="@+id/customImageView"
         android:layout_alignParentRight="true"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="20dp"
         android:src="@drawable/blackmore" />
 
 
