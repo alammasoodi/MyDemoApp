@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:layout_weight="1"
-        android:paddingLeft="5dp"
-        android:textSize="10dp"
+        android:paddingLeft="3dp"
+        android:textSize="6dp"
         android:text="TextView"/>
     <ImageView
         android:id="@+id/customImageView"

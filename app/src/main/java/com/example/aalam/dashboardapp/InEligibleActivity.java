@@ -27,7 +27,7 @@ public class InEligibleActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(InEligibleActivity.this,DashboardActivity.class);
+        Intent intent = new Intent(InEligibleActivity.this,Welcome.class);
         startActivity(intent);
     }
 }

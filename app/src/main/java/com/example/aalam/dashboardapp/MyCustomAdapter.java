@@ -1,5 +1,8 @@
 package com.example.aalam.dashboardapp;
 
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,13 +33,17 @@ public class MyCustomAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     int selectedIndex;
     int selectedColor = Color.BLACK;
+    SurveyFragment2 mFragment2;
+    Button newButton;
 
-    public MyCustomAdapter(Context surveyActivity, String[] prgmNameList, int[] prgmImages) {
+    public MyCustomAdapter(Context surveyActivity, String[] prgmNameList, int[] prgmImages,SurveyFragment2 fragment2,Button b1) {
 
         result = prgmNameList;
         context = surveyActivity;
         imageId = prgmImages;
         selectedIndex = -1;
+        mFragment2 = fragment2;
+        newButton = b1;
 
         SharedPreferences getChecked = context.getSharedPreferences("StoreChecked", MODE_PRIVATE);
         getState = getChecked.getBoolean("checked", false);
@@ -77,9 +85,10 @@ public class MyCustomAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         ViewHolder holder;
+
         if (convertView == null) {
             v = LayoutInflater.from(context).inflate(R.layout.listitem_layout, null);
-            v.setMinimumHeight(100);
+            v.setMinimumHeight(120);
             holder = new ViewHolder();
             holder.tv = (TextView) v.findViewById(R.id.customTextView);
             holder.img = (ImageView)v.findViewById(R.id.customImageView);
@@ -88,7 +97,7 @@ public class MyCustomAdapter extends BaseAdapter {
             holder = (ViewHolder) v.getTag();
         }
         if (selectedIndex != -1 && position == selectedIndex) {
-            holder.tv.setTextColor(Color.RED);
+            holder.tv.setTextColor(Color.parseColor("#C6545E"));
             holder.img.setImageResource(R.drawable.redmore);
         } else {
             holder.tv.setTextColor(Color.BLACK);
@@ -104,33 +113,43 @@ public class MyCustomAdapter extends BaseAdapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FragmentManager fm = ((Activity)context).getFragmentManager();
+                FragmentTransaction fragmentTransaction =  fm.beginTransaction();
+                newButton.setVisibility(View.VISIBLE);
                 Intent myIntent;
                 if (flag == true) {
                     ViewHolder holder1 = new ViewHolder();
                     if (position == 0) {
-                        myIntent = new Intent(context, SurveyActivity2.class);
+                       // myIntent = new Intent(context, SurveyActivity2.class);
                         editor.putInt("pos", 0);
-                        editor.commit();
+
                         holder1.tv = (TextView) v.findViewById(R.id.customTextView);
                         holder1.img = (ImageView)v.findViewById(R.id.customImageView);
-                        holder1.tv.setTextColor(Color.RED);
+                        holder1.tv.setTextColor(Color.parseColor("#C6545E"));
                         holder1.img.setImageResource(R.drawable.redmore);
                         flag = false;
-                        context.startActivity(myIntent);
+                        editor.commit();
+                        fragmentTransaction.add(R.id.frame_layout2, mFragment2).addToBackStack(null);
+                        fragmentTransaction.commit();
+                        //context.startActivity(myIntent);
 
                     } else if (position == 1) {
-                        myIntent = new Intent(context, SurveyActivity2.class);
+                        //myIntent = new Intent(context, SurveyActivity2.class);
                         editor.putInt("pos", 1);
-                        editor.commit();
                         holder1.tv = (TextView) v.findViewById(R.id.customTextView);
                         holder1.img = (ImageView)v.findViewById(R.id.customImageView);
-                        holder1.tv.setTextColor(Color.RED);
+                        holder1.tv.setTextColor(Color.parseColor("#C6545E"));
                         holder1.img.setImageResource(R.drawable.redmore);
+
                         flag = false;
-                        context.startActivity(myIntent);
+                        editor.commit();
+                        fragmentTransaction.add(R.id.frame_layout2, mFragment2).addToBackStack(null);
+                        fragmentTransaction.commit();
+                    //    context.startActivity(myIntent);
                     }
+
                 }else {
+
                     setSelectedIndex(position);
                 }
             }});

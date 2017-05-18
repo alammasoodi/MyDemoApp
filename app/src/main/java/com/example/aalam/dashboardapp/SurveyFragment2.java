@@ -1,48 +1,48 @@
 package com.example.aalam.dashboardapp;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * Created by aalam on 18/5/17.
+ */
 
-public class SurveyActivity2 extends AppCompatActivity {
+public class SurveyFragment2 extends Fragment{
+    View v;
     ListView surveyLIST2;
-    int getQues;
-    int QNo,Qn,actual;
+    int QNo,Qn;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_survey2);
-        Intent intent = getIntent();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Intent intent = getActivity().getIntent();
         QNo = intent.getIntExtra("quesNo",0);
         Qn = intent.getIntExtra("nextButtonValue",0);
-        SharedPreferences getQues = getSharedPreferences("SurveyQues1", MODE_PRIVATE);
+        SharedPreferences getQues = getActivity().getSharedPreferences("SurveyQues1", MODE_PRIVATE);
         QNo = getQues.getInt("pos", 0);
-        SharedPreferences.Editor editor = getSharedPreferences("StoreChecked", MODE_PRIVATE).edit();
-        surveyLIST2 = (ListView) findViewById(R.id.surveyList2);
-        CalligraphyConfig.initDefault(
-                new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("fonts/HelveticaNeueThin.ttf")
-                        .setFontAttrId(R.attr.fontPath)
-                        .build());
+        v = inflater.inflate(R.layout.surveyfragment2_layout, container, false);
         String[] values = new String[]{"Yes",
                 "No"};
         int[] prgmImages = {R.drawable.blackmore, R.drawable.blackmore};
+        surveyLIST2 = (ListView)v. findViewById(R.id.surveyFragmentList2);
         surveyLIST2.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        final MyCustomAdapter2 adapter = new MyCustomAdapter2(SurveyActivity2.this, values, prgmImages,QNo);
+        final MyCustomAdapter2 adapter = new MyCustomAdapter2(getActivity(), values, prgmImages,QNo);
         surveyLIST2.setAdapter(adapter);
 //        SharedPreferences getQuest = getSharedPreferences("SurveyQues1", MODE_PRIVATE);
 //        getQues = getQuest.getInt("ques", 0);
@@ -104,12 +104,12 @@ public class SurveyActivity2 extends AppCompatActivity {
             }
         });
 
-    }}
 
 
-//    @Override
-//    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-//    }
-//}
+        return v;
+    }
 
+
+
+
+}

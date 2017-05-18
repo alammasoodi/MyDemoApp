@@ -5,16 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.aalam.dashboardapp.Welcome"
     android:background="@drawable/welcome">
 
     <TextView
+        android:layout_marginTop="50dp"
         android:id="@+id/tGetStarted"
-        android:layout_marginLeft="60dp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get Started"
-        android:textSize="50dp"/>
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/joinStudy"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Join Study"
+        android:textSize="30dp"/>
 
 </LinearLayout>
