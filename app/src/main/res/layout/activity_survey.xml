@@ -7,18 +7,20 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:ignore="MissingPrefix"
     android:paddingTop="30dp"
-    tools:context="com.example.aalam.dashboardapp.SurveyActivity">
+    tools:context="com.example.aalam.dashboardapp.SurveyActivity"
+    tools:ignore="MissingPrefix">
+
     <TextView
+        fontPath="fonts/HelveticaNeueThin.ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Have you ever had a menstrual period ?"
-        fontPath="fonts/HelveticaNeueThin.ttf"
         android:gravity="center"
-        android:textSize="30dp"
         android:padding="30dp"
-        android:textColor="@color/black"/>
+        android:text="Have you ever had a menstrual period ?"
+        android:textColor="@color/black"
+        android:textSize="30dp"/>
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
@@ -26,38 +28,41 @@
 
     <ListView
         android:id="@+id/surveyList"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:paddingLeft="10dp"
-        android:textColor="@drawable/list_selector"
-        android:duplicateParentState="true"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:choiceMode="singleChoice"
         android:divider="#c0c0c0"
         android:dividerHeight="1sp"
-        android:choiceMode="singleChoice">
+        android:duplicateParentState="true"
+        android:paddingLeft="10dp"
+        android:textColor="@drawable/list_selector">
         >
     </ListView>
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_marginTop="5dp"
         android:background="#c0c0c0"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp">
-    <Button
-        android:id="@+id/newButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:layout_gravity="bottom"
-        android:textColor="@color/materialWhite"
-        android:background="@drawable/button_click"
-        android:backgroundTint="@color/black"
-        />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/newButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/button_click"
+            android:backgroundTint="@color/black"
+            android:text="Next"
+            android:textColor="@color/materialWhite"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

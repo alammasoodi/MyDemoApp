@@ -1,5 +1,8 @@
 package com.example.aalam.dashboardapp;
 
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,10 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import static android.content.Context.MODE_PRIVATE;
+import static java.security.AccessController.getContext;
 
 /**
  * Created by aalam on 17/5/17.
@@ -21,25 +26,42 @@ public class MyCustomAdapter2 extends BaseAdapter {
     String[] result;
     Context context;
     int[] imageId;
-    int selectedIndex,getQues;
-    boolean f = true;
+    int selectedIndex, getQues;
+    Button newButton2;
+    boolean f = true, flag;
+    int p, QuesNo, send, option;
 
-    public MyCustomAdapter2(Context surveyActivity2, String[] prgmNameList, int[] prgmImages,int Qno) {
+    public MyCustomAdapter2(Context surveyActivity2, String[] prgmNameList, int[] prgmImages, int Qno, Button b1) {
 
         result = prgmNameList;
         context = surveyActivity2;
         imageId = prgmImages;
         selectedIndex = -1;
+        newButton2 = b1;
         getQues = Qno;
-
-
+        flag = true;
+        SharedPreferences.Editor editor = context.getSharedPreferences("SurveyQues1", MODE_PRIVATE).edit();
+        SharedPreferences getPos = context.getSharedPreferences("SurveyQues1", MODE_PRIVATE);
+        SharedPreferences getPos1 = context.getSharedPreferences("SurveyQues", MODE_PRIVATE);
+        editor.putInt("setQues", getQues);
+        editor.commit();
+        p = getPos.getInt("pos", 0);
+        send = getPos1.getInt("send", 0);
+        QuesNo = getPos1.getInt("pos", 0);
+        if (send == 0) {
+            option = p;
+        } else {
+            option = QuesNo;
+        }
 
 
     }
+
     public void setSelectedIndex(int ind) {
         selectedIndex = ind;
         notifyDataSetChanged();
     }
+
     @Override
     public int getCount() {
         return result.length;
@@ -54,6 +76,7 @@ public class MyCustomAdapter2 extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
     public class ViewHolder {
         TextView tv;
         ImageView img;
@@ -69,7 +92,7 @@ public class MyCustomAdapter2 extends BaseAdapter {
             v.setMinimumHeight(150);
             holder = new MyCustomAdapter2.ViewHolder();
             holder.tv = (TextView) v.findViewById(R.id.customTextView2);
-            holder.img = (ImageView)v.findViewById(R.id.customImageView2);
+            holder.img = (ImageView) v.findViewById(R.id.customImageView2);
             v.setTag(holder);
         } else {
             holder = (MyCustomAdapter2.ViewHolder) v.getTag();
@@ -79,8 +102,8 @@ public class MyCustomAdapter2 extends BaseAdapter {
             holder.img.setImageResource(R.drawable.redmore);
         } else {
             holder.tv.setTextColor(Color.BLACK);
-            if(f == true)
-            holder.img.setImageResource(R.drawable.blackmore);
+            if (f == true)
+                holder.img.setImageResource(R.drawable.blackmore);
             else
                 holder.img.setImageResource(R.drawable.transparent);
         }
@@ -89,52 +112,79 @@ public class MyCustomAdapter2 extends BaseAdapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setSelectedIndex(position);
+
                 Intent myIntent;
+                newButton2.postDelayed(new Runnable() {
+                    public void run() {
+                        newButton2.setVisibility(View.VISIBLE);
+                    }
+                }, 250);
                 MyCustomAdapter2.ViewHolder holder1 = new MyCustomAdapter2.ViewHolder();
                 holder1.tv = (TextView) v.findViewById(R.id.customTextView2);
                 holder1.img = (ImageView) v.findViewById(R.id.customImageView2);
-                if (position == 0) {
-                    if(getQues == 0) {
-                        myIntent = new Intent(context, EligibleActivity.class);
-                        holder1.tv.setTextColor(Color.parseColor("#C6545E"));
-                        holder1.img.setImageResource(R.drawable.redmore);
-                        f = false;
-                        context.startActivity(myIntent);
-                    }else{
-                        myIntent = new Intent(context, InEligibleActivity.class);
-                        holder1.tv.setTextColor(Color.parseColor("#C6545E"));
-                        holder1.img.setImageResource(R.drawable.redmore);
-                        f = false;
-                        context.startActivity(myIntent);
-                    }
+                if (flag == true) {
+                    if (position == 0) {
+                        if (option == 0) {
+                            myIntent = new Intent(context, EligibleActivity.class);
+                            holder1.tv.setTextColor(Color.parseColor("#C6545E"));
+                            holder1.img.setImageResource(R.drawable.redmore);
+                            flag = false;
+                            f = false;
+                            context.startActivity(myIntent);
+                        } else {
+                            myIntent = new Intent(context, InEligibleActivity.class);
+                            holder1.tv.setTextColor(Color.parseColor("#C6545E"));
+                            holder1.img.setImageResource(R.drawable.redmore);
+                            flag = false;
+                            f = false;
+                            context.startActivity(myIntent);
+                        }
                     } else if (position == 1) {
-                    if(getQues == 0){
-                        myIntent = new Intent(context,ControlActivity.class);
-                        holder1.tv.setTextColor(Color.parseColor("#C6545E"));
-                        holder1.img.setImageResource(R.drawable.redmore);
-                        f = false;
-                        context.startActivity(myIntent);
-                    }
-                    else
-                    {
-                        myIntent = new Intent(context,InEligibleActivity.class);
-                        holder1.tv.setTextColor(Color.parseColor("#C6545E"));
-                        holder1.img.setImageResource(R.drawable.redmore);
-                        f = false;
-                        context.startActivity(myIntent);
+                        if (option == 0) {
+                            myIntent = new Intent(context, ControlActivity.class);
+                            holder1.tv.setTextColor(Color.parseColor("#C6545E"));
+                            holder1.img.setImageResource(R.drawable.redmore);
+                            flag = false;
+                            f = false;
+                            context.startActivity(myIntent);
+                        } else {
+
+                            myIntent = new Intent(context, InEligibleActivity.class);
+                            holder1.tv.setTextColor(Color.parseColor("#C6545E"));
+                            holder1.img.setImageResource(R.drawable.redmore);
+                            flag = false;
+                            f = false;
+                            context.startActivity(myIntent);
+
+                        }
 
                     }
+
+                } else {
+                    setSelectedIndex(position);
+                }
+                newButton2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+
+                    public void onClick(View v) {
+
+                        Intent myIntent;
+                        if (position == 0) {
+                            myIntent = new Intent(context, EligibleActivity.class);
+                            context.startActivity(myIntent);
+
+                        } else {
+                            myIntent = new Intent(context, InEligibleActivity.class);
+                            context.startActivity(myIntent);
+                        }
                     }
-
-            }});
-
+                });
+            }
+        });
 
 
         return v;
     }
-
-
 
 
 }

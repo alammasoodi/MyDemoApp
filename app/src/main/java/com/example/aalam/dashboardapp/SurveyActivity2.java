@@ -42,8 +42,8 @@ public class SurveyActivity2 extends AppCompatActivity {
                 "No"};
         int[] prgmImages = {R.drawable.blackmore, R.drawable.blackmore};
         surveyLIST2.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        final MyCustomAdapter2 adapter = new MyCustomAdapter2(SurveyActivity2.this, values, prgmImages,QNo);
-        surveyLIST2.setAdapter(adapter);
+        //final MyCustomAdapter2 adapter = new MyCustomAdapter2(SurveyActivity2.this, values, prgmImages,QNo);
+       // surveyLIST2.setAdapter(adapter);
 //        SharedPreferences getQuest = getSharedPreferences("SurveyQues1", MODE_PRIVATE);
 //        getQues = getQuest.getInt("ques", 0);
 //        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values) {
@@ -100,7 +100,7 @@ public class SurveyActivity2 extends AppCompatActivity {
 //                }
 //            }
 //        });
-                adapter.setSelectedIndex(position);
+                //adapter.setSelectedIndex(position);
             }
         });
 

@@ -41,7 +41,7 @@ public class SurveyActivity extends AppCompatActivity {
                         .setDefaultFontPath("fonts/HelveticaNeueThin.ttf")
                         .setFontAttrId(R.attr.fontPath)
                         .build());
-        String[] values = new String[]{"Yes, I have had a menstrual period",
+        String[] values = new String[]{"jnj, I have had a menstrual period",
                 "No, I have not started menstruating"};
         int[] prgmImages = {R.drawable.blackmore, R.drawable.blackmore};
 //        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, values) {
