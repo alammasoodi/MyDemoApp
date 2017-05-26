@@ -24,20 +24,20 @@ import static android.content.Context.MODE_PRIVATE;
  */
 
 public class MyCustomAdapter extends BaseAdapter {
-    String[] result;
+    String[] survey1Questions;
     Context context;
     int[] imageId;
-    boolean getState, flag;
-    int getPos;
+    boolean getState, moveToNext;
+    //int getPos;
     private LayoutInflater inflater;
     int selectedIndex;
-    int selectedColor = Color.BLACK;
+   // int selectedColor = Color.BLACK;
     SurveyFragment2 mFragment2;
     Button newButton;
 
     public MyCustomAdapter(Context surveyActivity, String[] prgmNameList, int[] prgmImages, SurveyFragment2 fragment2, Button b1) {
 
-        result = prgmNameList;
+        survey1Questions = prgmNameList;
         context = surveyActivity;
         imageId = prgmImages;
         selectedIndex = -1;
@@ -48,7 +48,7 @@ public class MyCustomAdapter extends BaseAdapter {
         getState = getChecked.getBoolean("checked", false);
 
 
-        flag = true;
+        moveToNext = true;
 
 
     }
@@ -60,12 +60,12 @@ public class MyCustomAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return result.length;
+        return survey1Questions.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return result[position];
+        return survey1Questions[position];
     }
 
     @Override
@@ -99,12 +99,12 @@ public class MyCustomAdapter extends BaseAdapter {
             holder.img.setImageResource(R.drawable.redmore);
         } else {
             holder.tv.setTextColor(Color.BLACK);
-            if (flag == true)
+            if (moveToNext == true)
                 holder.img.setImageResource(R.drawable.blackmore);
             else
                 holder.img.setImageResource(R.drawable.transparent);
         }
-        holder.tv.setText(result[position]);
+        holder.tv.setText(survey1Questions[position]);
 
         holder.tv.setTextSize(18);
         final SharedPreferences.Editor editor1 = context.getSharedPreferences("SurveyQues", MODE_PRIVATE).edit();
@@ -123,7 +123,7 @@ public class MyCustomAdapter extends BaseAdapter {
                 }, 250);
                 Intent myIntent;
 
-                if (flag == true) {
+                if (moveToNext == true) {
                     ViewHolder holder1 = new ViewHolder();
                     if (position == 0) {
                         editor.putInt("pos", 0);
@@ -132,7 +132,7 @@ public class MyCustomAdapter extends BaseAdapter {
                         holder1.img = (ImageView) v.findViewById(R.id.customImageView);
                         holder1.tv.setTextColor(Color.parseColor("#C6545E"));
                         holder1.img.setImageResource(R.drawable.redmore);
-                        flag = false;
+                        moveToNext = false;
                         editor.commit();
                         fragmentTransaction.add(R.id.frame_layout2, mFragment2).addToBackStack(null);
                         fragmentTransaction.commit();
@@ -145,7 +145,7 @@ public class MyCustomAdapter extends BaseAdapter {
                         holder1.tv.setTextColor(Color.parseColor("#C6545E"));
                         holder1.img.setImageResource(R.drawable.redmore);
 
-                        flag = false;
+                        moveToNext = false;
                         editor.commit();
                         fragmentTransaction.add(R.id.frame_layout2, mFragment2).addToBackStack(null);
                         fragmentTransaction.commit();

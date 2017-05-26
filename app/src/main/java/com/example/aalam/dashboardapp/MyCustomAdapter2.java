@@ -23,35 +23,35 @@ import static java.security.AccessController.getContext;
  */
 
 public class MyCustomAdapter2 extends BaseAdapter {
-    String[] result;
+    String[] survey2Questions;
     Context context;
     int[] imageId;
     int selectedIndex, getQues;
     Button newButton2;
-    boolean f = true, flag;
-    int p, QuesNo, send, option;
+    boolean alternateColor = true, moveToNext;
+    int quesNoFromListClick, quesNoFromButton, send, option;
 
     public MyCustomAdapter2(Context surveyActivity2, String[] prgmNameList, int[] prgmImages, int Qno, Button b1) {
 
-        result = prgmNameList;
+        survey2Questions = prgmNameList;
         context = surveyActivity2;
         imageId = prgmImages;
         selectedIndex = -1;
         newButton2 = b1;
         getQues = Qno;
-        flag = true;
+        moveToNext = true;
         SharedPreferences.Editor editor = context.getSharedPreferences("SurveyQues1", MODE_PRIVATE).edit();
         SharedPreferences getPos = context.getSharedPreferences("SurveyQues1", MODE_PRIVATE);
         SharedPreferences getPos1 = context.getSharedPreferences("SurveyQues", MODE_PRIVATE);
         editor.putInt("setQues", getQues);
         editor.commit();
-        p = getPos.getInt("pos", 0);
+        quesNoFromListClick = getPos.getInt("pos", 0);
         send = getPos1.getInt("send", 0);
-        QuesNo = getPos1.getInt("pos", 0);
+        quesNoFromButton = getPos1.getInt("pos", 0);
         if (send == 0) {
-            option = p;
+            option = quesNoFromListClick;
         } else {
-            option = QuesNo;
+            option = quesNoFromButton;
         }
 
 
@@ -64,12 +64,12 @@ public class MyCustomAdapter2 extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return result.length;
+        return survey2Questions.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return result[position];
+        return survey2Questions[position];
     }
 
     @Override
@@ -102,12 +102,12 @@ public class MyCustomAdapter2 extends BaseAdapter {
             holder.img.setImageResource(R.drawable.redmore);
         } else {
             holder.tv.setTextColor(Color.BLACK);
-            if (f == true)
+            if (alternateColor == true)
                 holder.img.setImageResource(R.drawable.blackmore);
             else
                 holder.img.setImageResource(R.drawable.transparent);
         }
-        holder.tv.setText(result[position]);
+        holder.tv.setText(survey2Questions[position]);
         holder.tv.setTextSize(18);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,21 +122,21 @@ public class MyCustomAdapter2 extends BaseAdapter {
                 MyCustomAdapter2.ViewHolder holder1 = new MyCustomAdapter2.ViewHolder();
                 holder1.tv = (TextView) v.findViewById(R.id.customTextView2);
                 holder1.img = (ImageView) v.findViewById(R.id.customImageView2);
-                if (flag == true) {
+                if (moveToNext == true) {
                     if (position == 0) {
                         if (option == 0) {
                             myIntent = new Intent(context, EligibleActivity.class);
                             holder1.tv.setTextColor(Color.parseColor("#C6545E"));
                             holder1.img.setImageResource(R.drawable.redmore);
-                            flag = false;
-                            f = false;
+                            moveToNext = false;
+                            alternateColor = false;
                             context.startActivity(myIntent);
                         } else {
                             myIntent = new Intent(context, InEligibleActivity.class);
                             holder1.tv.setTextColor(Color.parseColor("#C6545E"));
                             holder1.img.setImageResource(R.drawable.redmore);
-                            flag = false;
-                            f = false;
+                            moveToNext = false;
+                            alternateColor = false;
                             context.startActivity(myIntent);
                         }
                     } else if (position == 1) {
@@ -144,16 +144,16 @@ public class MyCustomAdapter2 extends BaseAdapter {
                             myIntent = new Intent(context, ControlActivity.class);
                             holder1.tv.setTextColor(Color.parseColor("#C6545E"));
                             holder1.img.setImageResource(R.drawable.redmore);
-                            flag = false;
-                            f = false;
+                            moveToNext = false;
+                            alternateColor = false;
                             context.startActivity(myIntent);
                         } else {
 
                             myIntent = new Intent(context, InEligibleActivity.class);
                             holder1.tv.setTextColor(Color.parseColor("#C6545E"));
                             holder1.img.setImageResource(R.drawable.redmore);
-                            flag = false;
-                            f = false;
+                            moveToNext = false;
+                            alternateColor = false;
                             context.startActivity(myIntent);
 
                         }

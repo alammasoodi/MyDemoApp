@@ -25,8 +25,8 @@ public class SurveyFragment2 extends Fragment {
     View v;
     ListView surveyLIST2;
     Button newButton2;
-    int QNo, Qn;
-    boolean flag2 = false;
+    int QNo;
+    boolean nextButtonVisible2 = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class SurveyFragment2 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Intent intent = getActivity().getIntent();
+       // Intent intent = getActivity().getIntent();
 
         SharedPreferences getQues = getActivity().getSharedPreferences("SurveyQues1", MODE_PRIVATE);
         QNo = getQues.getInt("pos", 0);
@@ -48,7 +48,7 @@ public class SurveyFragment2 extends Fragment {
         surveyLIST2.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         final MyCustomAdapter2 adapter = new MyCustomAdapter2(getActivity(), values, prgmImages, QNo, newButton2);
         surveyLIST2.setAdapter(adapter);
-        if (flag2 == false)
+        if (nextButtonVisible2  == false)
             newButton2.setVisibility(View.INVISIBLE);
 //
         surveyLIST2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,7 +70,7 @@ public class SurveyFragment2 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                flag2 = true;
+                nextButtonVisible2  = true;
                 adapter.setSelectedIndex(position);
             }
         });
