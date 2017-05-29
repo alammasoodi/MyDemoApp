@@ -88,11 +88,11 @@ public class MyCustomAdapter2 extends BaseAdapter {
         MyCustomAdapter2.ViewHolder holder;
 
         if (convertView == null) {
-            v = LayoutInflater.from(context).inflate(R.layout.listitem2_layout, null);
+            v = LayoutInflater.from(context).inflate(R.layout.listitem_layout, null);
             v.setMinimumHeight(150);
             holder = new MyCustomAdapter2.ViewHolder();
-            holder.tv = (TextView) v.findViewById(R.id.customTextView2);
-            holder.img = (ImageView) v.findViewById(R.id.customImageView2);
+            holder.tv = (TextView) v.findViewById(R.id.customTextView);
+            holder.img = (ImageView) v.findViewById(R.id.customImageView);
             v.setTag(holder);
         } else {
             holder = (MyCustomAdapter2.ViewHolder) v.getTag();
@@ -120,8 +120,8 @@ public class MyCustomAdapter2 extends BaseAdapter {
                     }
                 }, 250);
                 MyCustomAdapter2.ViewHolder holder1 = new MyCustomAdapter2.ViewHolder();
-                holder1.tv = (TextView) v.findViewById(R.id.customTextView2);
-                holder1.img = (ImageView) v.findViewById(R.id.customImageView2);
+                holder1.tv = (TextView) v.findViewById(R.id.customTextView);
+                holder1.img = (ImageView) v.findViewById(R.id.customImageView);
                 if (moveToNext == true) {
                     if (position == 0) {
                         if (option == 0) {
