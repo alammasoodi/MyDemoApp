@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="50dp"
+    tools:ignore="MissingPrefix"
+    android:orientation="vertical"
+    tools:context="com.example.aalam.dashboardapp.EligibleActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You are eligible"
+        android:paddingLeft="50dp"
+        fontPath="fonts/HelveticaNeueThin.ttf"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:padding="30dp"
+        android:textColor="@color/materialPink"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The next few screens will explain the research study and will help you decide whether or not you want to participate.After the walkthrough, we'll briefly test your understanding to make sure you what is involved"
+        fontPath="fonts/HelveticaNeueThin.ttf"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/materialPink"/>
+    <TextView
+        android:id="@+id/tGetStarted"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Get Started"
+        android:textSize="40dp"/>
+</LinearLayout>

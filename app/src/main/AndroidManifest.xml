@@ -3,7 +3,7 @@
           package="com.example.aalam.dashboardapp">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -41,6 +41,20 @@
         <activity android:name=".ForwardActivity1">
         </activity>
         <activity android:name=".ForwardActivity2">
+        </activity>
+        <activity android:name=".ForwardActivity3">
+        </activity>
+        <activity android:name=".SurveyActivity2">
+        </activity>
+        <activity android:name=".EligibleActivity">
+        </activity>
+        <activity android:name=".InEligibleActivity">
+        </activity>
+        <activity android:name=".ControlActivity">
+        </activity>
+        <activity android:name=".StudyActivity">
+        </activity>
+        <activity android:name=".OnBackActivity">
         </activity>
     </application>
 
