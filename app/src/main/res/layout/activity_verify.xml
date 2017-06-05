@@ -22,6 +22,7 @@
         android:layout_gravity="center"
         android:layout_width="120dp"
         android:minHeight="25dp"
+        android:hint="Enter Here"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_edittext"
         android:text="Enter here"

@@ -7,13 +7,14 @@ import android.view.View;
 import android.widget.TextView;
 
 public class Welcome extends AppCompatActivity {
-    TextView textView,tViewJoin;
+    TextView textView,tViewJoin,tGrid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         textView = (TextView) findViewById(R.id.tGetStarted);
         tViewJoin = (TextView)findViewById(R.id.joinStudy);
+        tGrid = (TextView)findViewById(R.id.gridQuestion);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,6 +26,13 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Welcome.this,StudyActivity.class);
+                startActivity(intent);
+            }
+        });
+        tGrid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Welcome.this,GridActivity.class);
                 startActivity(intent);
             }
         });
